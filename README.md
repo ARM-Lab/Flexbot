@@ -1,1 +1,1 @@
-# Flexbot---research-and-education-workspace-for-intelligent-flexible-robotics
+# Flexbot - research and education workspace for intelligent flexible robotics
