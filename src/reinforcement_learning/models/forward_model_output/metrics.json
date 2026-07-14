@@ -1,0 +1,30 @@
+{
+  "mae_per_axis": [
+    0.23431451618671417,
+    0.12612631916999817,
+    0.24250948429107666
+  ],
+  "mae_mean": 0.2009834498167038,
+  "rmse_all_axes": 0.2835221039827209,
+  "r2": 0.9998387694358826,
+  "euclidean_error_mean": 0.40792718529701233,
+  "euclidean_error_median": 0.3512271046638489,
+  "euclidean_error_std": 0.2734035849571228,
+  "euclidean_error_min": 0.009080098010599613,
+  "euclidean_error_max": 3.4722962379455566,
+  "euclidean_error_p95": 0.8310071229934692,
+  "best_val_loss_scaled_mse": 0.00016219136206777613,
+  "num_samples": 30250,
+  "device": "cuda",
+  "config": {
+    "data": "datasetNewNew100.txt",
+    "output_dir": "forward_model_output",
+    "epochs": 500,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "hidden_dim": 256,
+    "dropout": 0.05,
+    "test_size": 0.2,
+    "seed": 42
+  }
+}

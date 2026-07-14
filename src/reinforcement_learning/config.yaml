@@ -1,0 +1,75 @@
+seed: 42
+
+paths:
+  # Paths are resolved relative to this config file. These defaults assume that
+  # ppo_one_segment_three_cables/ is inside the root of the Flexbot repository.
+  dataset: ../RL/data/continuum_robot_dataset.txt
+  forward_checkpoint: ../forward_model_output/forward_model_checkpoint.pt
+  input_scaler: ../forward_model_output/x_scaler.joblib
+  output_scaler: ../forward_model_output/y_scaler.joblib
+  output_dir: results/ppo_one_segment
+
+forward_model:
+  # Exact architecture and checkpoint format of the supplied training script.
+  checkpoint_key: model_state_dict
+  hidden_dim: 256
+  dropout: 0.05
+  device: cpu
+
+dataset:
+  # The supplied training script reads a headerless file:
+  # a1,a2,a3,x,y,z
+  has_header: false
+  delimiter: ","
+  column_names: [a1, a2, a3, x, y, z]
+  cable_columns: [a1, a2, a3]
+  position_columns: [x, y, z]
+
+  # Cable commands are 0--100 and 100 represents 10 mm.
+  cable_unit_to_mm: 0.1
+  max_active_cables: 2
+  active_threshold_units: 0.000001
+  invalid_row_policy: error
+
+environment:
+  cable_min_units: [0.0, 0.0, 0.0]
+  cable_max_units: [100.0, 100.0, 100.0]
+
+  # PPO action [-1, 1] is multiplied by this value per step.
+  # 2.5 dataset units = 0.25 mm.
+  max_delta_units: 2.5
+  enforce_measured_cable_domain: true
+  max_episode_steps: 50
+  success_tolerance_mm: 2.0
+  minimum_start_distance_mm: 10.0
+  initial_state_mode: random_dataset
+
+  reward:
+    progress_weight: 10.0
+    distance_weight: 1.0
+    action_weight: 0.01
+    boundary_weight: 0.10
+    success_bonus: 10.0
+
+training:
+  total_timesteps: 500000
+  n_envs: 1
+  learning_rate: 0.0003
+  n_steps: 2048
+  batch_size: 256
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.20
+  ent_coef: 0.001
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  policy_hidden_sizes: [128, 128]
+  eval_frequency_steps: 20000
+  checkpoint_frequency_steps: 50000
+  evaluation_episodes: 20
+  progress_bar: true
+
+evaluation:
+  episodes: 100
+  deterministic: true

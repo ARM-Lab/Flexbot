@@ -1,0 +1,12 @@
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+.venv/
+venv/
+logs/
+results/
+*.pth
+*.pt
+*.keras
+*.h5
