@@ -288,7 +288,7 @@ Main files:
 Clone the repository:
 
 ```bash
-git clone https://github.com/PeterJanSincak/Flexbot.git
+git clone https://github.com/ARM-Lab/Flexbot.git
 cd Flexbot
 ```
 
