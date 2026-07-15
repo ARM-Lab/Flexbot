@@ -9,7 +9,7 @@ The repository is intended for students and researchers who want to:
 - train and evaluate a PPO controller,
 - reproduce, analyse, and extend the current results.
 
-The current software implementation focuses on a **single continuum segment actuated by three cables**.
+The current software implementation focuses on a **cable-driven continuum robot**.
 
 ---
 
