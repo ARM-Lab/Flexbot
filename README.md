@@ -262,7 +262,7 @@ The PPO implementation is stored in:
 src/reinforcement_learning/
 ```
 
-The current reinforcement-learning task is point reaching with one continuum segment and three cables. A trained forward model is used to estimate the robot tip position resulting from the selected cable commands.
+The current reinforcement-learning task is point reaching. A trained forward model is used to estimate the robot tip position resulting from the selected cable commands.
 
 Main files:
 
